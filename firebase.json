@@ -1,26 +1,27 @@
 {
-
   "functions": {
-    "source": "src/functions",
-    "predeploy": [],
-    "postdeploy": []
+    "source": "src/functions"
   },
   "hosting": {
     "public": "src/public",
-     "rewrites": [
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "rewrites": [
       {
         "source": "/",
         "function": "index"
       },
       {
-        "source": "privacy-policy",
+        "source": "/index",
+        "function": "index"
+      },
+      {
+        "source": "/privacy-policy",
         "function": "privacyPolicy"
       },
       {
-        "source": "terms-of-service",
+        "source": "/terms-of-service",
         "function": "termsOfService"
-      }
-      ,
+      },
       {
         "source": "/_next/static/**",
         "function": "static"
