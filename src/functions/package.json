@@ -1,0 +1,20 @@
+{
+  "name": "martechpoint.com",
+  "version": "1.0.0",
+  "description": "Martech Point's functions",
+  "author": "Mehdi Karim",
+  "license": "MIT",
+  "scripts": {
+  },
+  "dependencies": {
+    "firebase-admin": "^8.7.0",
+    "firebase-functions": "^3.3.0"
+  },
+  "engines": {
+    "node": "8"
+  },
+  "private": true
+}
+
+
+

@@ -1,0 +1,30 @@
+{
+
+  "functions": {
+    "source": "src/functions",
+    "predeploy": [],
+    "postdeploy": []
+  },
+  "hosting": {
+    "public": "src/public",
+     "rewrites": [
+      {
+        "source": "/",
+        "function": "index"
+      },
+      {
+        "source": "privacy-policy",
+        "function": "privacyPolicy"
+      },
+      {
+        "source": "terms-of-service",
+        "function": "termsOfService"
+      }
+      ,
+      {
+        "source": "/_next/static/**",
+        "function": "static"
+      }
+    ]
+  }
+}

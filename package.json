@@ -1,0 +1,34 @@
+{
+  "name": "martechpoint.com",
+  "version": "1.0.0",
+  "description": "Martech Point's website",
+  "author": "Mehdi Karim",
+  "license": "MIT",
+  "scripts": {
+    "dev": "cd src/app && yarn install && yarn next dev",
+    "build": "cd src/app && yarn install && NODE_ENV=production yarn next build",
+    "start": "cd src/app && yarn install && NODE_ENV=production yarn next start",
+    "prep": "yarn build && rm -rf ./src/functions/.next && cp -r ./src/app/.next ./src/functions/ && cd ./src/functions  && yarn install",
+    "serve": "yarn prep && NODE_ENV=production firebase serve --only functions,hosting",
+    "deploy": "yarn prep && NODE_ENV=production firebase deploy",
+    "commit": "git-cz"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.3",
+    "commitizen": "^4.0.3",
+    "cz-conventional-changelog": "^3.0.2",
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.4.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.16.0",
+    "eslint-plugin-react-hooks": "^2.1.2",
+    "firebase-tools": "^7.7.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  }
+}
