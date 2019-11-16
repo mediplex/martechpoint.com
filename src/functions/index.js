@@ -20,6 +20,30 @@ exports.static = onRequest((request, response) => {
   response.sendFile(`${__dirname}${request.path.replace('_next', '.next')}`);
 });
 
+
+
+
+exports.sendEmail = onRequest(async (request, response) => {
+
+
+
+const sendgridMail = require('@sendgrid/mail');
+sendgridMail.setApiKey(`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`);
+const msg = {
+  to: 'mehdi.karim@outlook.com',
+  from: 'mehdi.karim@martechpoint.com',
+  subject: 'Sending with Twilio SendGrid is Fun',
+  text: 'and easy to do anywhere, even with Node.js',
+  html: '<strong>and easy to do anywhere, even with Node.js</strong>'
+};
+sendgridMail.send(msg);
+
+
+  response.send(`<h1>Message sent 😁</h1>`)
+})
+
+
+
 // Listen for changes in all documents in the 'users' collection
 // exports.sendEmail = functions.firestore.document('lists/{listId}').onUpdate((change, context) => {
 //   // If we set `/users/marie` to {name: "Marie"} then

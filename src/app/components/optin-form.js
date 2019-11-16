@@ -7,7 +7,7 @@ import { Box, TextField, Button, Typography } from '@material-ui/core';
 import LoopIcon from '@material-ui/icons/Loop';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 
-const ButtonIndicator = ({ isSubmitting }) => {
+const SubmitButtonIndicator = ({ isSubmitting }) => {
   if (!isSubmitting) return <ArrowForwardIcon />;
   else
     return (
@@ -58,6 +58,10 @@ export const OptinForm = ({ listId }) => {
       })
       .then(() => {
         setIsSubmitting(false);
+
+        fetch(`https://us-central1-martech-point.cloudfunctions.net/sendEmail`).then(response=>console.log(response));
+
+  
         console.info('Success ✔');
       })
       .catch(error => console.error(error));
@@ -91,7 +95,7 @@ export const OptinForm = ({ listId }) => {
             type="submit"
             variant="contained"
             color="secondary"
-            startIcon={<ButtonIndicator isSubmitting={isSubmitting} />}
+            startIcon={<SubmitButtonIndicator isSubmitting={isSubmitting} />}
             style={{ minHeight: 56 }}
             disabled={isSubmitting}
           >

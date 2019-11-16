@@ -1,21 +1,13 @@
-import {
-  Typography,
-  Grid,
-  List,
-  ListItem,
-  ListItemAvatar,
-  Avatar,
-  ListItemText
-} from '@material-ui/core';
+import { Typography, Grid, List, ListItem, ListItemAvatar, Avatar, ListItemText } from '@material-ui/core';
 import CheckIcon from '@material-ui/icons/Check';
 
 import { Section } from './section';
 
 export const SalesFunnel = () => {
   return (
-    <Section title={'What is a Sales Funnel'}>
+    <Section title={'What is a Sales Funnel?'} titleInTheBox boxed>
       <Grid container spacing={2}>
-        <Grid item xs={6}>
+        <Grid item xs={12} lg={6} container direction="column" justify="flex-start" alignItems="center">
           <img
             //   srcset="elva-fairy-320w.jpg 320w,
             //  elva-fairy-480w.jpg 480w,
@@ -28,7 +20,7 @@ export const SalesFunnel = () => {
             alt="Sales Funnels Illustration"
           />
         </Grid>
-        <Grid item container spacing={0} xs={6}>
+        <Grid item container spacing={0} xs={12} lg={6}>
           <Grid item>
             <Typography>
               {`A sales funnel is a series of emails, ads, lead magnets, landing pages, and sales
@@ -68,9 +60,7 @@ export const SalesFunnel = () => {
                     <CheckIcon />
                   </Avatar>
                 </ListItemAvatar>
-                <ListItemText
-                  primary={'​Follow-up with your visitors, even after they leave your page!'}
-                />
+                <ListItemText primary={'​Follow-up with your visitors, even after they leave your page!'} />
               </ListItem>
             </List>
           </Grid>

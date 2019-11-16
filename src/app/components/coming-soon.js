@@ -1,4 +1,4 @@
-import { Box, Container, Grid, Typography, Button, ButtonGroup } from '@material-ui/core';
+import { Box, Container, Grid, Typography, Button, ButtonGroup, Paper } from '@material-ui/core';
 
 import { OptinForm } from './optin-form';
 
@@ -37,13 +37,15 @@ export const ComingSoon = () => {
               justifyContent="center"
               alignItems="center"
             >
-              <img
-                src="https://firebasestorage.googleapis.com/v0/b/martech-point.appspot.com/o/martechpoint-logo.png?alt=media&token=63ca25db-11db-475e-9c1f-9d9fbb8d708f"
-                alt="logo"
-                height={57}
-                width={300}
-                style={{ backgroundColor: '#ccc' }}
-              />
+              <Paper
+                style={{
+                  backgroundColor: '#3a3a3a'
+                }}
+              >
+                <Box padding={1} display="flex" flexDirection="column" justifyContent="center" alignItems="center">
+                  <img src="/martechpoint-logo.png" alt="logo" height={57} width={300} style={{}} />
+                </Box>
+              </Paper>
             </Box>
 
             {/* Headline */}

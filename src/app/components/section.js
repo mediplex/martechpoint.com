@@ -1,26 +1,74 @@
 import { Box, Container, Paper, Typography } from '@material-ui/core';
 
-export const Section = ({ children, title }) => (
-  <Box marginBottom={5}>
+export const Section = ({ children, title, titleInTheBox, boxed }) => (
+  <Box marginBottom={10}>
+    {!titleInTheBox && (
+      <Container maxWidth={'sm'}>
+        <Box marginBottom={5}>
+          <Typography variant={`h3`} align={`center`}>
+            {title}
+          </Typography>
+        </Box>
+      </Container>
+    )}
     <Container maxWidth={'md'} component="section">
-      <Paper style={{ borderRadius: 32 }}>
+      {boxed && (
+        <Paper style={{ borderRadius: 32 }}>
+          <Box
+            px={{
+              xs: 2,
+              sm: 6,
+              md: 8,
+              lg: 10,
+              xl: 10
+            }}
+            py={{
+              xs: 4,
+              sm: 6,
+              md: 8,
+              lg: 10,
+              xl: 10
+            }}
+            display="flex"
+            flexDirection="column"
+            justifyContent="center"
+            alignItems="strech"
+          >
+            {titleInTheBox && (
+              <Box marginBottom={10}>
+                <Typography variant={`h3`} align={`center`}>
+                  {title}
+                </Typography>
+              </Box>
+            )}
+            <Box>{children}</Box>
+          </Box>
+        </Paper>
+      )}
+      {!boxed && (
         <Box
-          px={10}
-          py={10}
+          padding={{
+            xs: 2,
+            sm: 2,
+            md: 8,
+            lg: 10,
+            xl: 10
+          }}
           display="flex"
           flexDirection="column"
           justifyContent="center"
           alignItems="strech"
         >
-          <Box paddingBottom={10}>
-            <Typography variant={`h3`} align={`center`}>
-              {title}
-            </Typography>
-          </Box>
-
+          {titleInTheBox && (
+            <Box marginBottom={10}>
+              <Typography variant={`h3`} align={`center`}>
+                {title}
+              </Typography>
+            </Box>
+          )}
           <Box>{children}</Box>
         </Box>
-      </Paper>
+      )}
     </Container>
   </Box>
 );
