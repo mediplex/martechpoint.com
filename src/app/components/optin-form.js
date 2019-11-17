@@ -46,25 +46,9 @@ export const OptinForm = ({ listId }) => {
 
   const handleSubmit = async values => {
     setIsSubmitting(true);
-
-    const firestore = await import('../firebase').then(({ firestore }) => firestore);
-
-    await firestore
-      .collection('lists')
-      .doc(listId)
-      .set({
-        email: values.email,
-        optin: Date.now()
-      })
-      .then(() => {
-        setIsSubmitting(false);
-
-        fetch(`https://us-central1-martech-point.cloudfunctions.net/sendEmail`).then(response=>console.log(response));
-
-  
-        console.info('Success ✔');
-      })
-      .catch(error => console.error(error));
+    fetch(`https://us-central1-martech-point.cloudfunctions.net/sendEmail`).then(response=>console.log(response));
+    // then setIsSubmitting(false);
+    // catch errors   
   };
 
   return (
@@ -76,7 +60,7 @@ export const OptinForm = ({ listId }) => {
             {({
               field, // { name, value, onChange, onBlur }
               form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
-              meta
+              // meta
             }) => (
               <TextField
                 helperText={touched['email'] ? errors['email'] : ''}

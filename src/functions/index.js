@@ -1,48 +1,59 @@
-const onRequest = require('firebase-functions').https.onRequest;
+const firebaseFunctions = require('firebase-functions');
 
-exports.index = onRequest((request, response) => {
+exports.index = firebaseFunctions.https.onRequest((request, response) => {
   response.set('Cache-Control', `public, max-age=${60 * 60 * 24 * 365}, smaxage=${60 * 60 * 24 * 365}`);
   response.sendFile(`${__dirname}/.next/serverless/pages/index.html`);
 });
 
-exports.termOfSevice = onRequest((request, response) => {
+exports.termOfSevice = firebaseFunctions.https.onRequest((request, response) => {
   response.set('Cache-Control', `public, max-age=${60 * 60 * 24 * 365}, smaxage=${60 * 60 * 24 * 365}`);
   response.sendFile(`${__dirname}/.next/serverless/pages/terms-of-service.html`);
 });
 
-exports.privacyPolicy = onRequest((request, response) => {
+exports.privacyPolicy = firebaseFunctions.https.onRequest((request, response) => {
   response.set('Cache-Control', `public, max-age=${60 * 60 * 24 * 365}, smaxage=${60 * 60 * 24 * 365}`);
   response.sendFile(`${__dirname}/.next/serverless/pages/privacy-policy.html`);
 });
 
-exports.static = onRequest((request, response) => {
+exports.static = firebaseFunctions.https.onRequest((request, response) => {
   response.set('Cache-Control', `public, max-age=${60 * 60 * 24 * 365}, smaxage=${60 * 60 * 24 * 365}`);
   response.sendFile(`${__dirname}${request.path.replace('_next', '.next')}`);
 });
 
+exports.handleNewLead = firebaseFunctions.https.onRequest(async (request, response) => {
+  const firebaseAdmin = require('firebase-admin');
 
+  if (!firebaseAdmin.apps[0]) firebaseAdmin.initializeApp(firebaseFunctions.config().firebase);
 
+  const firestore = firebaseAdmin.firestore();
 
-exports.sendEmail = onRequest(async (request, response) => {
+  firestore
+    .collection('lists')
+    .doc('coming-soon')
+    .update({
+      contacts: firebaseAdmin.firestore.FieldValue.arrayUnion({
+        email: `${Math.random()
+          .toString(36)
+          .substring(2, 15)}@domain.com`,
+        optinDate: Date.now()
+      })
+    })
+    .then(() => {
+      response.send(`<h1>New Lead Generated 😁</h1>`);
+    })
+    .catch(error => console.error(error));
 
-
-
-const sendgridMail = require('@sendgrid/mail');
-sendgridMail.setApiKey(`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`);
-const msg = {
-  to: 'mehdi.karim@outlook.com',
-  from: 'mehdi.karim@martechpoint.com',
-  subject: 'Sending with Twilio SendGrid is Fun',
-  text: 'and easy to do anywhere, even with Node.js',
-  html: '<strong>and easy to do anywhere, even with Node.js</strong>'
-};
-sendgridMail.send(msg);
-
-
-  response.send(`<h1>Message sent 😁</h1>`)
-})
-
-
+  // const sendgridMail = require('@sendgrid/mail');
+  // sendgridMail.setApiKey(`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`);
+  // const msg = {
+  //   to: 'mehdi.karim@outlook.com',
+  //   from: 'mehdi.karim@martechpoint.com',
+  //   subject: 'Sending with Twilio SendGrid is Fun',
+  //   text: 'and easy to do anywhere, even with Node.js',
+  //   html: '<strong>and easy to do anywhere, even with Node.js</strong>'
+  // };
+  // sendgridMail.send(msg);
+});
 
 // Listen for changes in all documents in the 'users' collection
 // exports.sendEmail = functions.firestore.document('lists/{listId}').onUpdate((change, context) => {
