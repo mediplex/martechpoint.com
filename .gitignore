@@ -11,12 +11,13 @@
 /coverage
 
 # next.js
-/src/functions/.next/
+/src/functions/lambdas/
 /src/app/.next/
 /out/
 
 # production
 .firebase
+/src/public/*
 
 # misc
 .DS_Store

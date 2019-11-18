@@ -1,23 +1,8 @@
 const firebaseFunctions = require('firebase-functions');
 
-exports.index = firebaseFunctions.https.onRequest((request, response) => {
-  response.set('Cache-Control', `public, max-age=${60 * 60 * 24 * 365}, smaxage=${60 * 60 * 24 * 365}`);
-  response.sendFile(`${__dirname}/.next/serverless/pages/index.html`);
-});
-
-exports.termOfSevice = firebaseFunctions.https.onRequest((request, response) => {
-  response.set('Cache-Control', `public, max-age=${60 * 60 * 24 * 365}, smaxage=${60 * 60 * 24 * 365}`);
-  response.sendFile(`${__dirname}/.next/serverless/pages/terms-of-service.html`);
-});
-
-exports.privacyPolicy = firebaseFunctions.https.onRequest((request, response) => {
-  response.set('Cache-Control', `public, max-age=${60 * 60 * 24 * 365}, smaxage=${60 * 60 * 24 * 365}`);
-  response.sendFile(`${__dirname}/.next/serverless/pages/privacy-policy.html`);
-});
-
-exports.static = firebaseFunctions.https.onRequest((request, response) => {
-  response.set('Cache-Control', `public, max-age=${60 * 60 * 24 * 365}, smaxage=${60 * 60 * 24 * 365}`);
-  response.sendFile(`${__dirname}${request.path.replace('_next', '.next')}`);
+exports.error = firebaseFunctions.https.onRequest((request, response) => {
+  const errorPage = require(`${__dirname}/lambdas/_error`);
+  errorPage.render(request, response);
 });
 
 exports.handleNewLead = firebaseFunctions.https.onRequest(async (request, response) => {
