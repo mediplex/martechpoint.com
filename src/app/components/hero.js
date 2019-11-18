@@ -4,9 +4,20 @@ import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 export const Hero = () => (
   <Box
     component="header"
-    px={20}
-    // marginTop={6}
-    paddingTop={10}
+    px={{
+      xs: 2,
+      sm: 6,
+      md: 8,
+      lg: 20,
+      xl: 20
+    }}
+    paddingTop={{
+      xs: 4,
+      sm: 6,
+      md: 8,
+      lg: 10,
+      xl: 10
+    }}
     paddingBottom={30}
     display="flex"
     flexDirection="column"
@@ -52,13 +63,7 @@ export const Hero = () => (
       </Typography>
     </Box>
     {/* CTA */}
-    <Box
-      paddingTop={4}
-      display={'flex'}
-      flexDirection={'column'}
-      alignItems={'center'}
-      justifyContent={'center'}
-    >
+    <Box paddingTop={4} display={'flex'} flexDirection={'column'} alignItems={'center'} justifyContent={'center'}>
       <Grow in={true}>
         <Button
           style={{ minHeight: 64, borderRadius: 32 }}

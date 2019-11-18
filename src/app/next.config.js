@@ -1,4 +1,9 @@
 module.exports = {
-  target: 'serverless'
+  // poweredByHeader: false,
+  // crossOrigin: 'anonymous',
+  target: 'serverless',
+  devIndicators: {
+    autoPrerender: false
+  }
   // distDir: '../../src/functions/next'
 };

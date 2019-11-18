@@ -4,11 +4,12 @@
   "description": "Martech Point's functions",
   "author": "Mehdi Karim",
   "license": "MIT",
-  "scripts": {
-  },
+  "scripts": {},
   "dependencies": {
+    "@sendgrid/mail": "^6.4.0",
     "firebase-admin": "^8.7.0",
-    "firebase-functions": "^3.3.0"
+    "firebase-functions": "^3.3.0",
+    "handlebars": "^4.5.2"
   },
   "engines": {
     "node": "8"
@@ -20,6 +21,3 @@
   },
   "private": true
 }
-
-
-
