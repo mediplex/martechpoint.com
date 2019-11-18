@@ -66,7 +66,7 @@ export const ComingSoon = () => {
             {/* CTA */}
             <Grid container display={'flex'} justify={'center'} alignItems={'center'}>
               <Grid item xs={12} lg={6}>
-                <OptinForm listId={'coming-soon'} />
+                <OptinForm listId={'coming-soon'} templateId={`0001`} />
               </Grid>
             </Grid>
           </Box>

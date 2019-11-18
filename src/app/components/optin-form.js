@@ -31,7 +31,7 @@ const SubmitButtonIndicator = ({ isSubmitting }) => {
     );
 };
 
-export const OptinForm = ({ listId }) => {
+export const OptinForm = ({ listId, templateId }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const initialValues = {
@@ -46,9 +46,34 @@ export const OptinForm = ({ listId }) => {
 
   const handleSubmit = async values => {
     setIsSubmitting(true);
-    fetch(`https://us-central1-martech-point.cloudfunctions.net/sendEmail`).then(response=>console.log(response));
-    // then setIsSubmitting(false);
-    // catch errors   
+
+
+
+    const dataToBeSent = {
+      listId,
+      templateId,
+      lead: {
+        email: values.email,
+        optinInDate: Date.now()
+      }
+    };
+
+    console.log(dataToBeSent)
+
+    await import('axios').then(axios => {
+      axios.post(
+        '/handleNewLead',
+        {
+          ...dataToBeSent
+          
+        }
+      ).then(response => {
+        console.info(response);
+      }).catch(error => console.error(error))
+        .finally(() =>
+        setIsSubmitting(false)
+        );
+    })
   };
 
   return (

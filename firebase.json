@@ -25,6 +25,10 @@
       {
         "source": "/_next/static/**",
         "function": "static"
+      },
+      {
+        "source": "/handleNewLead",
+        "function": "handleNewLead"
       }
     ]
   }

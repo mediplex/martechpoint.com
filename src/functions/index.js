@@ -21,73 +21,74 @@ exports.static = firebaseFunctions.https.onRequest((request, response) => {
 });
 
 exports.handleNewLead = firebaseFunctions.https.onRequest(async (request, response) => {
+  // console.log(request.query);
+  // console.log(request.query.data);
+  // console.log(request.query.listId);
+  // console.log(request.query.lead);
+  // console.log(request.query.templateId);
+
+  const { listId, lead, templateId } = request.body;
+
   const firebaseAdmin = require('firebase-admin');
 
   if (!firebaseAdmin.apps[0]) firebaseAdmin.initializeApp(firebaseFunctions.config().firebase);
 
   const firestore = firebaseAdmin.firestore();
 
-  firestore
+  // check if listId and lead lead
+  const emailBody = await firestore
     .collection('lists')
-    .doc('coming-soon')
+    .doc(listId)
     .update({
       contacts: firebaseAdmin.firestore.FieldValue.arrayUnion({
-        email: `${Math.random()
-          .toString(36)
-          .substring(2, 15)}@domain.com`,
-        optinDate: Date.now()
+        ...lead
       })
     })
-    .then(() => {
-      response.send(`<h1>New Lead Generated 😁</h1>`);
+    .then(async () => {
+      const handlebars = require('handlebars');
+      // check if (!templateId)
+      const template = await firestore
+        .collection('lists')
+        .doc(listId)
+        .get()
+        .then(doc => {
+          if (doc.exists) {
+            const list = doc.data();
+
+            const template = list.templates.find(template => template.id == templateId);
+            // console.log(list.templates[0]);
+            // check if template exists
+            return template.body;
+          } else {
+            console.error(`error catched: lists/${listId} doc not found`);
+          }
+        })
+        .catch(err => {
+          console.log('Error getting document', err);
+        });
+
+      if (template) {
+        // should come form the database
+        const template = `<h1>email to be send to: {{email}}</h1>`;
+        const compiledTempate = handlebars.compile(template);
+        const data = request.body.lead;
+        const emailBody = compiledTempate(data);
+
+        return emailBody;
+      }
     })
     .catch(error => console.error(error));
 
   // const sendgridMail = require('@sendgrid/mail');
   // sendgridMail.setApiKey(`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`);
   // const msg = {
-  //   to: 'mehdi.karim@outlook.com',
-  //   from: 'mehdi.karim@martechpoint.com',
-  //   subject: 'Sending with Twilio SendGrid is Fun',
-  //   text: 'and easy to do anywhere, even with Node.js',
-  //   html: '<strong>and easy to do anywhere, even with Node.js</strong>'
+  //   to: lead.email,
+  //   from: 'mehdi.karim@martechpoint.com', // from appConfig
+  //   subject: 'Sending with Twilio SendGrid is Fun', // from List
+  //   // text: 'and easy to do anywhere, even with Node.js',
+  //   html: emailBody // from List
   // };
   // sendgridMail.send(msg);
+
+  response.send({ success: true }); // to be recrified
 });
-
-// Listen for changes in all documents in the 'users' collection
-// exports.sendEmail = functions.firestore.document('lists/{listId}').onUpdate((change, context) => {
-//   // If we set `/users/marie` to {name: "Marie"} then
-//   // context.params.userId == "marie"
-//   // ... and ...
-//   // change.after.data() == {name: "Marie"}
-
-//   const nodemailer = require('nodemailer');
-//     let transporter = nodemailer.createTransport({
-//         sendmail: true,
-//         newline: 'windows',
-//         logger: false
-//     });
-
-//     // Message object
-//     let message = {
-//         from: 'Mehdi from Martech Point<mehdi.karim@martechpoint.com>',
-
-//         // Comma separated list of recipients
-//         to: context.params.email.email,
-//         bcc: 'mehdi.karim@outlook.com',
-
-//         // Subject of the message
-//         subject: '🔴 Nodemailer Test Email ✔',
-
-//         // plaintext body
-//         text: 'Hello to myself!',
-
-//         // HTML body
-//         html: '<p><b>Hello</b> to myself </p>'
-//      };
-
-//     let info = await transporter.sendMail(message);
-//     console.log('Message sent successfully as %s', info.messageId);
-
-// });
