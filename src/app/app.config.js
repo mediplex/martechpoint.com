@@ -1,5 +1,5 @@
 export const appConfig = {
-  maintenanceMode: true
+  maintenanceMode: false
 }
 
 

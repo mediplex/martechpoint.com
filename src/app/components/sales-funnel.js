@@ -15,7 +15,7 @@ export const SalesFunnel = () => {
             //   sizes="(max-width: 320px) 280px,
             // (max-width: 480px) 440px,
             // 800px"
-            width={`250px`}
+            width={`300px`}
             src="https://lh3.googleusercontent.com/Li4LTDIURBd-PctEf4r3wsV-2jrce8WcMR-pLEPBJF6neyVLKoae46lsWoDglBxVMpmeqiU1gMMyPCDWs2vh=w903"
             alt="Sales Funnels Illustration"
           />

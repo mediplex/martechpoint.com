@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { Content } from '../components/content';
-import appConfig from '../app-config';
+import appConfig from '../app.config';
 import { ComingSoon } from '../components/coming-soon';
 
 export const Home = () => (
