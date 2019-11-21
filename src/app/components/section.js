@@ -1,75 +1,47 @@
 import { Box, Container, Paper, Typography } from '@material-ui/core';
 
-export const Section = ({ children, title, titleInTheBox, boxed }) => (
-  <Box marginBottom={10}>
-    {!titleInTheBox && (
-      <Container maxWidth={'sm'}>
-        <Box marginBottom={5}>
+export const Section = ({ children, title }) => (
+  <Box component={`section`}>
+        <Box
+        bgcolor={`#eee`}
+        py={{
+          xs: 5,
+          sm: 5,
+          md: 5,
+          lg: 5,
+          xl: 5,
+        }}>
+          <Container maxWidth={`lg`}>
           <Typography variant={`h3`} align={`center`}>
             {title}
           </Typography>
+          </Container>
         </Box>
-      </Container>
-    )}
-    <Container maxWidth={'md'} component="section">
-      {boxed && (
-        <Paper style={{ borderRadius: 32 }}>
-          <Box
-            px={{
-              xs: 2,
-              sm: 6,
-              md: 8,
-              lg: 10,
-              xl: 10
-            }}
-            py={{
-              xs: 4,
-              sm: 6,
-              md: 8,
-              lg: 10,
-              xl: 10
-            }}
-            display="flex"
-            flexDirection="column"
-            justifyContent="center"
-            alignItems="strech"
-          >
-            {titleInTheBox && (
-              <Box marginBottom={10}>
-                <Typography variant={`h3`} align={`center`}>
-                  {title}
-                </Typography>
-              </Box>
-            )}
-            <Box>{children}</Box>
-          </Box>
-        </Paper>
-      )}
-      {!boxed && (
-        <Box
-          padding={{
-            xs: 2,
-            sm: 2,
-            md: 8,
-            lg: 10,
-            xl: 10
-          }}
-          display="flex"
-          flexDirection="column"
-          justifyContent="center"
-          alignItems="strech"
-        >
-          {titleInTheBox && (
-            <Box marginBottom={10}>
-              <Typography variant={`h3`} align={`center`}>
-                {title}
-              </Typography>
-            </Box>
-          )}
-          <Box>{children}</Box>
-        </Box>
-      )}
+
+      <Box
+        display="flex"
+        flexDirection="column"
+        justifyContent="center"
+        alignItems="strech"
+        paddingTop={{
+          xs: 5,
+          sm: 5,
+          md: 5,
+          lg: 5,
+          xl: 5,
+        }}
+        paddingBottom={{
+          xs: 15,
+          sm: 15,
+          md: 15,
+          lg: 15,
+          xl: 15,
+        }}
+      >
+              <Container maxWidth={'md'}>
+        {children}
     </Container>
+      </Box>
   </Box>
 );
 

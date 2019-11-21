@@ -1,68 +1,113 @@
 import { Section } from './section';
-import { Grid, Typography } from '@material-ui/core';
+import { Typography, Box, Avatar, Divider } from '@material-ui/core';
+
+const data = {
+  title: `What working with us will mean for you?`,
+  content: [
+    {
+      subtitle: `We take care of your marketing tasks, So you can focus on your clients`,
+      body: `(Rewrite) We offer a 100% Done-For-You service, so the only finger you have to lift is the one that gives us the "thumbs-up".
+          All it takes to get started is selecting the AutoTask you want done through our app.
+          Then, we handle all the heavy lifting on our side. Strategy, copywriting, design, development, project management, ad management, quality assurance—it’s all done completely in-house by our team of experts.
+          Just sit back, click, and relax. You'll be amazed at how much time you save.`,
+      imgSrc: `https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/scrum_board_cesn.svg`,
+      imgAlt: `Sales Funnels Illustration`
+    },
+
+    {
+      subtitle: `We build your optimal Sales Funnel & You will own all of it`,
+      body: `Your sales funnel is yours and yours alone. We build all the components you'll ever need to make it successful.
+             But at the end of the day, every marketing asset created is yours.
+             No having to argue of ownership rights, no licensing, no back and forth with support staff.
+             We build it for you. We launch it for you. We optimise it. And YOU own that lead machine. Simple.`,
+      imgSrc: `https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/abstract_x68e.svg`,
+      imgAlt: `Sales Funnels Illustration`
+    },
+    {
+      subtitle: `One-Stop-Marketing-Shop Scalable Service, Powered By Our Easy-to-Use App`,
+      body: `Our On-Demand model and intuitive software app is designed with business use in mind.
+             We know you want to get your whole funnel live as soon as possible.
+             It's why we offer 4 unique pricing packages to suit your specific launch goals.
+             And it's why we made ordering content as easy as clicking a button.
+             No waiting around for months.
+             No revision after revision after revision.
+             No “dead air” that only ends up costing you money.
+             We work fast, so you don't have to.`,
+      imgSrc: `https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/add_to_cart_vkjp.svg`,
+      imgAlt: `Sales Funnels Illustration`
+    },
+    {
+      subtitle: `Rest Easy Knowing You’re In Good Hands`,
+      body: `We have been building growth-generating sales funnels for our precious clients over 10 years.
+             Since then, we’ve worked with 660+ businesses to build high-converting funnels with professional strategy, copy, and design.
+             It is impossible to find another option with Us's same level of experience, affordability, and marketing savvy.
+             For instance, our Triple Quality Check Guarantee to ensures your sales funnel is as polished as possible and ready to sell.`,
+      imgSrc: `https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/High_five_u364.svg`,
+      imgAlt: `Sales Funnels Illustration`
+    }
+  ]
+};
 
 export const HowTo = () => (
-         <Section title={'Here’s What Working With Us Will Mean for You?'} boxed>
-           <Grid container spacing={5}>
-             <Grid item xs={12} lg={6}>
-               <Typography
-                 variant={`h4`}
-               >{`WE Do Your Funnel Marketing Tasks, So YOU Can Focus On Your Clients`}</Typography>
-               <Typography>{`We offer a 100% Done-For-You service, so the only finger you have to lift is the one that gives us the "thumbs-up". All it takes to get started is selecting the AutoTask you want done through our app. Then, we handle all the heavy lifting on our side. Strategy, copywriting, design, development, project management, ad management, quality assurance—it’s all done completely in-house by our team of experts. Just sit back, click, and relax. You'll be amazed at how much time you save.`}</Typography>
-             </Grid>
+  <Section title={data.title}>
+    {data.content.map((element, index, content) => (
+      <Box
+        key={Math.random()
+          .toString(36)
+          .substr(2, 5)}
+      >
+        <Box
+          paddingBottom={5}
+          display={`flex`}
+          flexWrap={{ xs: 'nowrap', lg: 'wrap' }}
+          flexDirection={{ xs: 'column', lg: 'row' }}
+        >
+          <Box
+            //  order={{ xs: 1, lg: 1 }}
+            display={'flex'}
+            flexDirection={{ xs: 'column', lg: 'row' }}
+            alignItems={{ xs: 'center', lg: 'flex-start' }}
+            flexBasis={{ xs: '100%', lg: '100%' }}
+            paddingBottom={2}
+            paddingTop={2}
+          >
+            <Box marginRight={{ lg: 2 }} marginBottom={{ xs: 2 }}>
+              <Avatar style={{ padding: 30, fontSize: 'x-large' }}>{index + 1}</Avatar>
+            </Box>
 
-             <Grid item xs={12} lg={6} container direction="column" justify="center" alignItems="center">
-               <img
-                 width={`300px`}
-                 src={`https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/quiz_nlyh.svg`}
-                 alt="Sales Funnels Illustration"
-               />
-             </Grid>
-             <Grid item xs={12} lg={6} container direction="column" justify="center" alignItems="center">
-               <img
-                 width={`300px`}
-                 src={`https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/abstract_x68e.svg`}
-                 alt="Sales Funnels Illustration"
-               />
-             </Grid>
-             <Grid item xs={12} lg={6}>
-               <Typography
-                 variant={`h4`}
-               >{`WE Do Your Funnel Marketing Tasks, So YOU Can Focus On Your Clients`}</Typography>
-               <Typography>{`We offer a 100% Done-For-You service, so the only finger you have to lift is the one that gives us the "thumbs-up". All it takes to get started is selecting the AutoTask you want done through our app. Then, we handle all the heavy lifting on our side. Strategy, copywriting, design, development, project management, ad management, quality assurance—it’s all done completely in-house by our team of experts. Just sit back, click, and relax. You'll be amazed at how much time you save.`}</Typography>
-             </Grid>
+            <Box textAlign={{ xs: 'center', lg: 'left' }}>
+              <Typography variant={`h4`}>
+                <span>{element.subtitle}</span>
+              </Typography>
+            </Box>
+          </Box>
 
-             <Grid item xs={12} lg={6}>
-               <Typography
-                 variant={`h4`}
-               >{`WE Do Your Funnel Marketing Tasks, So YOU Can Focus On Your Clients`}</Typography>
-               <Typography>{`We offer a 100% Done-For-You service, so the only finger you have to lift is the one that gives us the "thumbs-up". All it takes to get started is selecting the AutoTask you want done through our app. Then, we handle all the heavy lifting on our side. Strategy, copywriting, design, development, project management, ad management, quality assurance—it’s all done completely in-house by our team of experts. Just sit back, click, and relax. You'll be amazed at how much time you save.`}</Typography>
-             </Grid>
+          <Box
+            // order={{ xs: 2, lg: index % 2 == 0 ? 3 : 2 }}
+            flexBasis={{ xs: '100%', lg: '50%' }}
+            display={`flex`}
+            flexDirection="column"
+            justifyContent="center"
+            alignItems="center"
+            py={2}
+            px={2}
+            minHeight={'100%'}
+          >
+            <img width={`100%`} src={element.imgSrc} alt={element.imgAlt} />
+          </Box>
 
-             <Grid item xs={12} lg={6} container direction="column" justify="center" alignItems="center">
-               <img
-                 width={`300px`}
-                 src={`https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/scrum_board_cesn.svg`}
-                 alt="Sales Funnels Illustration"
-               />
-             </Grid>
-
-             <Grid item xs={12} lg={6} container direction="column" justify="center" alignItems="center">
-               <img
-                 width={`300px`}
-                 src={`https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/Group_chat_unwm.svg`}
-                 alt="Sales Funnels Illustration"
-               />
-             </Grid>
-
-             <Grid item xs={12} lg={6}>
-               <Typography
-                 variant={`h4`}
-               >{`WE Do Your Funnel Marketing Tasks, So YOU Can Focus On Your Clients`}</Typography>
-               <Typography>{`We offer a 100% Done-For-You service, so the only finger you have to lift is the one that gives us the "thumbs-up". All it takes to get started is selecting the AutoTask you want done through our app. Then, we handle all the heavy lifting on our side. Strategy, copywriting, design, development, project management, ad management, quality assurance—it’s all done completely in-house by our team of experts. Just sit back, click, and relax. You'll be amazed at how much time you save.`}</Typography>
-             </Grid>
-           </Grid>
-         </Section>
-       );
+          <Box
+            // order={{ xs: 3, lg: index % 2 == 0 ? 2 : 3 }}
+            flexBasis={{ xs: '100%', lg: '50%' }}
+            py={2}
+          >
+            <Typography>{element.body}</Typography>
+          </Box>
+        </Box>
+        {content.length != index + 1 && <Divider variant="middle" style={{ marginTop: 15, marginBottom: 15 }} />}
+      </Box>
+    ))}
+  </Section>
+);
 
 export default HowTo;

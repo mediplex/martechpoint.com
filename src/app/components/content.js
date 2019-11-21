@@ -7,15 +7,25 @@ import HowTo from './howto';
 import { Reviews } from './reviews';
 
 export const Content = () => (
-  <Box bgcolor={'#f1f1f1'}>
+  <Box bgcolor={'#fff'}>
     <Hero />
-    <Box component={'main'} marginTop={-20}>
-      <SalesFunnel />
+    <Box component={'main'}>
       <HowTo />
+      <SalesFunnel />
       <Reviews/>
       <Services />
       <ScrollToTop />
     </Box>
+
+    <style global jsx>{`
+      main>section:nth-child(2n+2) {
+        background-color: #fafafa;
+      }
+
+      // main:nth-child(odd) {
+      //   background-color: #ddd;
+      // }
+    `}</style>
   </Box>
 );
 
