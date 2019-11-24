@@ -12,7 +12,7 @@ export const Services = () => {
                 component="img"
                 alt="Contemplative Reptile"
                 height="140"
-                image="https://bulma.io/images/placeholders/480x320.png"
+                image="https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/page_not_found_su7k.svg"
                 title="Contemplative Reptile"
               />
               <CardContent>
@@ -43,7 +43,7 @@ export const Services = () => {
                 component="img"
                 alt="Contemplative Reptile"
                 height="140"
-                image="https://bulma.io/images/placeholders/480x320.png"
+                image="https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/page_not_found_su7k.svg"
                 title="Contemplative Reptile"
               />
               <CardContent>
@@ -74,7 +74,7 @@ export const Services = () => {
                 component="img"
                 alt="Contemplative Reptile"
                 height="140"
-                image="https://bulma.io/images/placeholders/480x320.png"
+                image="https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/page_not_found_su7k.svg"
                 title="Contemplative Reptile"
               />
               <CardContent>
@@ -104,7 +104,7 @@ export const Services = () => {
                 component="img"
                 alt="Contemplative Reptile"
                 height="140"
-                image="https://bulma.io/images/placeholders/480x320.png"
+                image="https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/page_not_found_su7k.svg"
                 title="Contemplative Reptile"
               />
               <CardContent>

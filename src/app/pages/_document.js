@@ -1,6 +1,8 @@
 import React from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheets } from '@material-ui/core/styles';
+import theme from '../theme';
+
 
 export default class MyDocument extends Document {
   render() {
@@ -9,7 +11,7 @@ export default class MyDocument extends Document {
         <Head>
           <meta charSet="utf-8" />
           <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no" />
-          <meta name="theme-color" content={`#fff`} />
+          <meta name="theme-color" content={theme.palette.primary.main} />
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <body>

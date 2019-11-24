@@ -1,8 +1,9 @@
 import { Section } from './section';
 import { Typography, Box, Avatar, Divider } from '@material-ui/core';
+import theme from '../theme';
 
 const data = {
-  title: `What working with us will mean for you?`,
+  title: `What working with us means for you?`,
   content: [
     {
       subtitle: `We take care of your marketing tasks, So you can focus on your clients`,
@@ -10,7 +11,7 @@ const data = {
           All it takes to get started is selecting the AutoTask you want done through our app.
           Then, we handle all the heavy lifting on our side. Strategy, copywriting, design, development, project management, ad management, quality assurance—it’s all done completely in-house by our team of experts.
           Just sit back, click, and relax. You'll be amazed at how much time you save.`,
-      imgSrc: `https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/scrum_board_cesn.svg`,
+      imgSrc: `/scrum-board.svg`,
       imgAlt: `Sales Funnels Illustration`
     },
 
@@ -48,8 +49,11 @@ const data = {
   ]
 };
 
-export const HowTo = () => (
-  <Section title={data.title}>
+export const HowTo = () => {
+
+
+return  (
+<Section title={data.title}>
     {data.content.map((element, index, content) => (
       <Box
         key={Math.random()
@@ -72,7 +76,7 @@ export const HowTo = () => (
             paddingTop={2}
           >
             <Box marginRight={{ lg: 2 }} marginBottom={{ xs: 2 }}>
-              <Avatar style={{ padding: 30, fontSize: 'x-large' }}>{index + 1}</Avatar>
+              <Avatar style={{padding: 30, fontSize: 'x-large', backgroundColor: theme.palette.primary.main}}>{index + 1}</Avatar>
             </Box>
 
             <Box textAlign={{ xs: 'center', lg: 'left' }}>
@@ -89,11 +93,10 @@ export const HowTo = () => (
             flexDirection="column"
             justifyContent="center"
             alignItems="center"
-            py={2}
-            px={2}
-            minHeight={'100%'}
+            padding={0}
+            // minHeight={'100%'}
           >
-            <img width={`100%`} src={element.imgSrc} alt={element.imgAlt} />
+            <img width={`75%`} src={element.imgSrc} alt={element.imgAlt} />
           </Box>
 
           <Box
@@ -108,6 +111,6 @@ export const HowTo = () => (
       </Box>
     ))}
   </Section>
-);
+)}
 
 export default HowTo;

@@ -1,9 +1,16 @@
-import { Box, Container, Paper, Typography } from '@material-ui/core';
+import { Box, Container, Typography } from '@material-ui/core';
 
 export const Section = ({ children, title }) => (
   <Box component={`section`}>
         <Box
-        bgcolor={`#eee`}
+        style={{
+          position: 'sticky',
+          top: 0,
+          left: 0,
+          zIndex: 999 //:not(:stuck) // should get smaller with a smooth trasition
+        }}
+        bgcolor={`#4CAF4F`}
+        color={`#FFF`}
         py={{
           xs: 5,
           sm: 5,
