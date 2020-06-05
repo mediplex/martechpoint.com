@@ -1,4 +1,4 @@
-import Section from './section';
+import Section from '.';
 
 export const Reviews = () => (
   <Section title={`What People Think About Us?`} boxed>

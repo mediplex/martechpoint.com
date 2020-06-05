@@ -1,6 +1,6 @@
-import { Section } from './section';
+import { Section } from '.';
 import { Typography, Box, Avatar, Divider } from '@material-ui/core';
-import theme from '../theme';
+import theme from '../../theme';
 
 const data = {
   title: `What working with us means for you?`,
@@ -11,7 +11,7 @@ const data = {
           All it takes to get started is selecting the AutoTask you want done through our app.
           Then, we handle all the heavy lifting on our side. Strategy, copywriting, design, development, project management, ad management, quality assurance—it’s all done completely in-house by our team of experts.
           Just sit back, click, and relax. You'll be amazed at how much time you save.`,
-      imgSrc: `/scrum-board.svg`,
+      imgSrc: `/scrum-board.png`,
       imgAlt: `Sales Funnels Illustration`
     },
 
@@ -49,10 +49,7 @@ const data = {
   ]
 };
 
-export const HowTo = () => {
-
-
-return  (
+export const WhatWorkingWithUsMeansForYou = () => (
 <Section title={data.title}>
     {data.content.map((element, index, content) => (
       <Box
@@ -111,6 +108,6 @@ return  (
       </Box>
     ))}
   </Section>
-)}
+);
 
-export default HowTo;
+export default WhatWorkingWithUsMeansForYou;

@@ -1,9 +1,11 @@
 import { Grid, Card, CardActionArea, CardContent, Typography, CardActions, CardMedia, Button } from '@material-ui/core';
-import Section from './section';
+import Section from '.';
 
 export const Services = () => {
   return (
     <Section title={'Services'}>
+      <img src="https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/add_to_cart_vkjp.svg" width="250px" />
+
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6} md={4} >
           <Card>

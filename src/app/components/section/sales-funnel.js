@@ -1,7 +1,7 @@
 import { Typography, Grid, List, ListItem, ListItemAvatar, Avatar, ListItemText } from '@material-ui/core';
 import CheckIcon from '@material-ui/icons/Check';
 
-import { Section } from './section';
+import { Section } from '.';
 
 export const SalesFunnel = () => {
   return (

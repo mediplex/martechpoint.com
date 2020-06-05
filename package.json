@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "cd src/app && yarn install && yarn next dev",
     "build": "cd src/app && yarn install && NODE_ENV=production yarn next build",
-    "start": "cd src/app && yarn install && NODE_ENV=production yarn next start",
+    "start": "yarn build && cd src/app && yarn install && NODE_ENV=production yarn next start",
     "prep": "yarn build && rm -r ./src/public/* && cp -r ./src/app/public/* ./src/public &&  mkdir ./src/public/_next &&  cp -r ./src/app/.next/static ./src/public/_next &&  cp ./src/app/.next/serverless/pages/*.html ./src/public &&  rm -rf ./src/functions/lambdas &&  mkdir ./src/functions/lambdas && cp ./src/app/.next/serverless/pages/*.js ./src/functions/lambdas && cd ./src/functions && yarn install",
     "serve": "yarn prep && NODE_ENV=production firebase serve --only functions,hosting",
     "deploy": "yarn prep && NODE_ENV=production firebase deploy",

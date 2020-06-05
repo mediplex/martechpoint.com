@@ -1,31 +1,23 @@
-import Hero from './hero';
-import Services from './services';
-import SalesFunnel from './sales-funnel';
 import ScrollToTop from './scroll-top';
 import { Box } from '@material-ui/core';
-import HowTo from './howto';
-import { Reviews } from './reviews';
+import { Hero } from './section/hero';
+import { Services } from './section/services';
+import { SalesFunnel } from './section/sales-funnel';
+import { WhatWorkingWithUsMeansForYou } from './section/what-working-with-us-means-for-you';
+import { Reviews } from './section/reviews';
+import { CaseStudy } from './section/case-study';
 
 export const Content = () => (
-  <Box bgcolor={'#fff'}>
+  <Box>
     <Hero />
     <Box component={'main'}>
-      <HowTo />
+      <CaseStudy />
+      <WhatWorkingWithUsMeansForYou />
       <SalesFunnel />
-      <Reviews/>
+      <Reviews />
       <Services />
       <ScrollToTop />
     </Box>
-
-    <style global jsx>{`
-      main>section:nth-child(2n+2) {
-        background-color: #fafafa;
-      }
-
-      // main:nth-child(odd) {
-      //   background-color: #ddd;
-      // }
-    `}</style>
   </Box>
 );
 

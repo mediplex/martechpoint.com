@@ -1,8 +1,8 @@
 import { useRef, useEffect, useState } from 'react';
-import { AppBar, Box, Container, Typography, useScrollTrigger } from '@material-ui/core';
+import { AppBar, Box, Container, useScrollTrigger } from '@material-ui/core';
 
 const ElevationScroll = ({ children }) => {
-  const [threshold, setThreshold] = useState(0)
+  const [threshold, setThreshold] = useState(99999)
 
   useEffect(()=>{
     if (children.ref.current){
@@ -16,8 +16,7 @@ const ElevationScroll = ({ children }) => {
   });
 
   return React.cloneElement(children, {
-    elevation: trigger ? 4 : 0,
-    // style: trigger? {paddingTop: 5, paddingBottom: 5 } : {paddingTop: 15, paddingBottom: 15 }
+    elevation: trigger ? 4 : 0
   });
 };
 
@@ -33,10 +32,7 @@ export const Section = ({ children, title }) => {
         >
           <Container maxWidth={`lg`}>
             <Box fontSize={{xs: 'h4.fontSize', lg: 'h3.fontSize'}}  align={`center`} py={{xs: 1, lg: 2}}>
-            {/* <Typography > */}
               {title}
-            {/* </Typography> */}
-
             </Box>
           </Container>
         </AppBar>
@@ -65,18 +61,6 @@ export const Section = ({ children, title }) => {
       >
         <Container maxWidth={'md'}>{children}</Container>
       </Box>
-
-      {/* <style jsx global>
-      {`
-       header.section-header { 
-          background: red
-      }
-
-        div.section-header:stuck {
-          background-color: red
-        }
-    `}
-    </style> */}
     </Box>
   );
 };
